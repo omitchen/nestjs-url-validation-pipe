@@ -93,35 +93,6 @@ describe("ValidateSourcePipe", () => {
   });
 
   describe("Configuration Options", () => {
-    describe("httpOnly: true", () => {
-      let strictPipe: ValidateSourcePipe;
-
-      beforeEach(async () => {
-        const module: TestingModule = await Test.createTestingModule({
-          providers: [
-            {
-              provide: ValidateSourcePipe,
-              useFactory: (validator: IUrlValidator, options: any) => {
-                return new ValidateSourcePipe(validator, options);
-              },
-              inject: [URL_VALIDATOR_TOKEN, VALIDATE_SOURCE_PIPE_OPTIONS],
-            },
-            {
-              provide: URL_VALIDATOR_TOKEN,
-              useClass: DefaultUrlValidator,
-            },
-            {
-              provide: VALIDATE_SOURCE_PIPE_OPTIONS,
-              useValue: { httpOnly: true },
-            },
-          ],
-        }).compile();
-
-        strictPipe = module.get<ValidateSourcePipe>(ValidateSourcePipe);
-      });
-
-    });
-
     describe("Specific Fields Validation", () => {
       let fieldsPipe: ValidateSourcePipe;
 

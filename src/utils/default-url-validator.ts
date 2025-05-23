@@ -30,7 +30,6 @@ export class DefaultUrlValidator implements IUrlValidator {
 
     try {
       const parsedUrl = new URL(url);
-      console.log("parsedUrl ===> ", parsedUrl);
 
       const httpOnly = (this as any).options?.httpOnly ?? true;
       if (httpOnly && !parsedUrl.protocol.match(/^https?:$/)) {
